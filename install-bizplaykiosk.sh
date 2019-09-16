@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # update ubuntu
-apt-get update && apt-get upgrade
+sudo apt-get update && apt-get upgrade -y
 
 # get software
 sudo apt-get install \
