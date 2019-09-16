@@ -10,7 +10,10 @@ sudo apt-get install \
   ssh \
   -y
 
-# dir
+# Change Default sound card
+# load-module module-stream-restore restore_device=false
+
+# Dir
 sudo mkdir -p /home/kiosk/.config/autostart
 
 # create kiosk autostart desktop
