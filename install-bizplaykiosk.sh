@@ -6,7 +6,7 @@ sudo apt-get update && apt-get upgrade -y
 # get software
 sudo apt-get install \
   unclutter \
-  chromium \
+  chromium-browser \
   ssh \
   -y
 
@@ -24,7 +24,7 @@ cat > /home/kiosk/.config/autostart/kiosk.desktop << EOF
 [Desktop Entry]
 Type=Application
 Name=chromium
-Exec=chromium-browser --password-store=basic --no-first-run --disable --disable-translate --disable-infobars --disable-suggestions-service --disable-save-password-bubble --disable-features=InfiniteSessionRestore --start-maximized --kiosk "http://play.playr.biz"
+Exec=chromium-browser --password-store=basic --no-first-run --disable --disable-translate --disable-session-crashed-bubble --disable-infobars --disable-suggestions-service --disable-save-password-bubble --disable-features=InfiniteSessionRestore --start-maximized --kiosk "http://play.playr.biz"
 X-GNOME-Autostart-enabled=true
 
 EOF
