@@ -58,6 +58,14 @@ EOF
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # Create Kiosk user
-sudo useradd kiosk
+# sudo useradd kiosk
+
+# Chromium Preferences
+if [ -e "./.config/chromium/Default/Preferences" ]; then
+  cp ./.config/chromium/Default/Preferences ./.config/chromium/Default/Preferences.backup
+fi
+sed -i 's/"site_engagement":/"site_engagement":{"http://play.playr.biz:80,*"}/' ./.config/chromium/Default/Preferences
+sed -i 's/"sound":{}/"sound":{play.playr.biz,*}/' ./.config/chromium/Default/Preferences
+
 
 echo "Done!"
