@@ -51,7 +51,7 @@ cat > /etc/xdg/lxsession/LXDE/autostart << EOF
 @pcmanfm --desktop --profile LXDE
 # @xscreensaver -no-splash
 @chromium --kiosk http://play.playr.biz
-@xset -display :0 s off -dpms
+xset -display :0 s off -dpms
 EOF
 
 # Desactivation du powersaving
