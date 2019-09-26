@@ -57,6 +57,14 @@ EOF
 # Desactivation du powersaving
 systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
+# Configuration Sortie Audio HDMI
+if [ -e "./.config/pulse/*-default-sink" ]; then
+  cp ./.config/pulse/*-default-sink ./.config/pulse/*-default-sink.backup
+fi
+cat > ./.config/pulse/*-default-sink <<EOF
+alsa_output.pci-0000_00_02.0-platform-hdmi-lpe-audio.hdmi-stereo-extra2
+EOF
+
 # Create Kiosk user
 sudo useradd kiosk
 
