@@ -25,7 +25,7 @@ apt-get update && apt-get upgrade
 apt-get install firmware-realtek firmware-misc-nonfree -y
 
 # Install component
-apt-get install xorg lxde-core tightvncserver chromium unclutter xrdp vlc ttf-mscorefonts-installer sudo  -y
+apt-get install xorg lxde-core tightvncserver chromium unclutter xrdp vlc ttf-mscorefonts-installer -y
 
 # Config lightdm
 if [ -e "/etc/lightdm/lightdm.conf" ]; then
@@ -33,7 +33,7 @@ if [ -e "/etc/lightdm/lightdm.conf" ]; then
 fi
 cat > /etc/lightdm/lightdm.conf << EOF
 [SeatDefaults]
-autologin-user=kiosk
+autologin-user=ladmin
 autologin-user-timeout=0
 [VNCServer]
 enabled=true
@@ -55,7 +55,7 @@ cat > /etc/xdg/lxsession/LXDE/autostart << EOF
 EOF
 
 # Desactivation du powersaving
-systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+# systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
 # Create Kiosk user
 # sudo useradd kiosk
@@ -64,7 +64,8 @@ systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 if [ -e "./.config/chromium/Default/Preferences" ]; then
   cp ./.config/chromium/Default/Preferences ./.config/chromium/Default/Preferences.backup
 fi
-sed -i 's/"site_engagement":{}/"site_engagement":{"http://play.playr.biz:80,*"}/' ./.config/chromium/Default/Preferences
-sed -i 's/"sound":{}/"sound":{play.playr.biz,*}/' ./.config/chromium/Default/Preferences
+# in Test
+# sed -i 's/"site_engagement":{}/"site_engagement":{"http://play.playr.biz:80,*"}/' ./.config/chromium/Default/Preferences
+# sed -i 's/"sound":{}/"sound":{play.playr.biz,*}/' ./.config/chromium/Default/Preferences
 
 echo "Done!"
